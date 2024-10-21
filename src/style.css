@@ -1,0 +1,47 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../public/fonts/satoshi/Satoshi-Variable.ttf') format('truetype'),
+    url('../public/fonts/satoshi/Satoshi-VariableItalic.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../public/fonts/satoshi/Satoshi-VariableItalic.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+}
+
+:root {
+    --primary-color: #3498db;
+    --primary-color-text: #ffffff;
+    --surface-ground: #f4f4f4;
+    --surface-section: #ffffff;
+    --surface-card: #ffffff;
+    --text-color: #c40000;
+    --text-color-secondary: #888888;
+    --border-color: #e0e0e0;
+    --border-radius: 4px;
+    --focus-ring: 0 0 0 0.2em black;
+}
+
+body {
+    font-family: 'Satoshi', sans-serif;
+}
+
+
+
+.p-inputtext, .p-multiselect-item span {
+    font-size: 0.9rem !important;
+}
+
+.p-datepicker {
+    width: initial !important;
+    min-width: initial !important;
+}
