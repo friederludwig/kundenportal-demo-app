@@ -13,6 +13,7 @@ import FormGroup from "../System/Form/FormGroup";
 import Multiselect, { SelectOption } from "../System/Form/Multiselect";
 import Singleselect from "../System/Form/Singleselect";
 import TextInput from "../System/Form/TextInput";
+import SystemAlert from "../System/SystemAlert";
 
 interface DownloadFormValues {
     title: string;
@@ -80,6 +81,58 @@ const recipients: SelectOption[] = [
     },
 ];
 
+const recipientGroups: SelectOption[] = [
+    {
+        key: "marketing",
+        label: "Marketing Abteilung",
+    },
+    {
+        key: "sales",
+        label: "Vertriebsabteilung",
+    },
+    {
+        key: "hr",
+        label: "Personalabteilung",
+    },
+    {
+        key: "it",
+        label: "IT Abteilung",
+    },
+    {
+        key: "finance",
+        label: "Finanzabteilung",
+    },
+    {
+        key: "management",
+        label: "Geschäftsleitung",
+    },
+    {
+        key: "support",
+        label: "Kundensupport",
+    },
+    {
+        key: "logistics",
+        label: "Logistikabteilung",
+    },
+    {
+        key: "research",
+        label: "Forschung und Entwicklung",
+    },
+    {
+        key: "legal",
+        label: "Rechtsabteilung",
+    },
+    {
+        key: "customers1",
+        label: "Kundengruppe 1",
+    },
+    {
+        key: "customers2",
+        label: "Kundengruppe 2",
+    },
+];
+
+
 const uploadedFiles: AssetItem[] = [
     {
         title: "Titelbild der Kampagne",
@@ -107,7 +160,18 @@ const DownloadNew: FC = () => {
 
     return (
         <div className="grid gap-4">
-            <Container title='Neues Asset Bundle ertellen'>
+            <Container>
+                <div className="my-2">
+                    <SystemAlert
+                        title="Die passende Dashboard Lösung für Ihre Anfoderungen"
+                        content="Diese App ist ein Prototyp und dient zur interaktiven Veranschaulichung von Anwenungsbeispielen.
+                            Gemeinsam finden wir die Lösung für Ihre Anforderung..."
+                        icon={<span className="text-primary-600 mb-1"><Info size={22} /></span>} />
+
+                </div>
+            </Container>
+
+            <Container title='Neues Asset Bundle erstellen'>
                 <div className="grid grid-cols-2 gap-4">
                     <TextInput
                         name="title"
@@ -138,8 +202,8 @@ const DownloadNew: FC = () => {
                                 <div className="w-full pr-3 flex items-center gap-3">
                                     <span className="text-xs text-gray-300">64%</span>
                                     <div className="relative h-1 w-full">
-                                        <span className="absolute top-0 left-0 h-1 w-full rounded-full bg-gray-200"></span>
-                                        <span className="absolute top-0 w-[65%] left-0 h-1 w-full rounded-full bg-primary-300"></span>
+                                        <span className="absolute block top-0 left-0 h-1 w-full rounded-full bg-gray-200"></span>
+                                        <span className="absolute block top-0 w-[64%] left-0 h-1 rounded-full bg-primary-300"></span>
                                     </div>
                                 </div>
                                 <div>
@@ -157,11 +221,11 @@ const DownloadNew: FC = () => {
                                         {file.title}
                                     </span>
                                 </div>
-                                <div className="flex w-[15%] justify-between">
-                                    <div className=" tracking-wide flex gap-2 items-center text-gray-400 text-xs">
-                                        <div className="w-14">Typ: {file.type}</div>
+                                <div className="flex w-[15%] justify-end">
+                                    <div className=" tracking-wide justify-end mr-3 flex gap-2 items-center text-gray-400 text-xs">
+                                        <div className="w-16">Typ: {file.type}</div>
                                         <span>|</span>
-                                        <div>Größe: {file.size}</div>
+                                        <div className="w-24">Größe: {file.size}</div>
                                     </div>
                                     <div className="">
                                         <Tooltip position="left" target=".custom-tooltip-btn">
@@ -186,25 +250,18 @@ const DownloadNew: FC = () => {
                     <div className="grid grid-cols-2 gap-4">
                         <div>
                             <Multiselect
+                                name="recipientGroups"
+                                placeholder="Empfängergruppen hinzufügen"
+                                options={recipientGroups}
+                                value={formValues.recipientGroups}
+                                onChange={(participants) => updateFormValue('recipientGroups', participants ?? null)} />
+                        </div>
+                        <div>
+                            <Multiselect
                                 name="recipients"
                                 placeholder="Empfänger hinzufügen"
                                 options={recipients}
                                 value={formValues.recipients}
-                                onChange={(participants) => updateFormValue('recipients', participants ?? null)} />
-                            <ul className="flex gap-2 flex-wrap mt-4">
-                                {formValues.recipients?.map(r =>
-                                    <li className="text-sm text-gray-500 py-1.5 px-3 rounded bg-gray-100" key={r.key}>
-                                        {r.label}
-                                    </li>
-                                )}
-                            </ul>
-                        </div>
-                        <div>
-                            <Multiselect
-                                name="recipientGroups"
-                                placeholder="Empfängergruppen hinzufügen"
-                                options={recipients}
-                                value={formValues.recipientGroups}
                                 onChange={(participants) => updateFormValue('recipients', participants ?? null)} />
                         </div>
                     </div>

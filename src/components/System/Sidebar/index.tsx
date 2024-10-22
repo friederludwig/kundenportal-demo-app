@@ -18,6 +18,8 @@ const Sidebar: FC = () => {
             ? [...current, submenu] : current.filter(s => s !== submenu)))
     }
 
+    const sidebarMinimized = true;
+
     return (
         <div className={styles.wrapper}>
             <ul className="border-l-2 border-primary/50">

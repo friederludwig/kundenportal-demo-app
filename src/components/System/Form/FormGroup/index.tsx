@@ -10,7 +10,7 @@ const FormGroup: FC<FormGroupProps> = ({title, children, className}) => {
 
     return (
         <div className="">
-            <p className="uppercase border-b text-sm font-medium pb-1 mb-4 tracking-wider">
+            <p className="uppercase border-b text-xs font-medium pb-1 mb-4 tracking-wider">
                 {title}
             </p>
             <div className={className}>

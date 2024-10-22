@@ -23,7 +23,7 @@ export const getSidebarStyles = (currentSubmenuOpen: SidebarSection[] | null, cu
             'text-white/70 py-2 flex gap-2 text-xs uppercase tracking-wider items-center w-full',
         ),
         sectionLink: (section: PageRoutes | null) => classNames(
-            'relative text-white py-2 flex gap-2.5 items-center w-full tracking-wide',
+            'relative text-white py-2 flex gap-2.5 items-center w-full tracking-wide text-[0.95rem]',
             'leading-none py-3.5',
             section === currentPageActive ? 'font-semibold' : '',
         ),

@@ -68,7 +68,7 @@ const initQuestions: Question[] = [
 const MAX_MULTI_SELECT_OPTIONS = 10;
 
 const SurveyNewQuestionForm = () => {
-    const [questions, setQuestions] = useState<Question[]>(initQuestions); // initQuestions
+    const [questions, setQuestions] = useState<Question[]>([]); // initQuestions
     const [formValues, updateFormValue, resetForm] = useFormState<NewQuestionFormValues>(initFormValues);
 
     // Separate state for managing options

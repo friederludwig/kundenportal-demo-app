@@ -18,7 +18,7 @@ interface RouterActions {
 }
 
 const initialState: RouterState = {
-    activePage: PageRoutes.DOWNLOAD_NEW,
+    activePage: PageRoutes.DOWNLOAD_OVERVIEW,
 };
 
 export const useRouterStore = create<RouterState & RouterActions>((set) => ({

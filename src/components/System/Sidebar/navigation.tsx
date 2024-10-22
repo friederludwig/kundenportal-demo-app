@@ -33,7 +33,7 @@ export const SIDEBAR_NAVIGATION: SidebarMenuSection[] = [
             },
             {
                 title: "Alle Umfragen",
-                route: PageRoutes.SURVEY_LIST,
+                route: null, //PageRoutes.SURVEY_LIST,
                 icon: <List size={18} />,
             },
             {
