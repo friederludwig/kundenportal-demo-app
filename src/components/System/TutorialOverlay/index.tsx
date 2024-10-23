@@ -1,9 +1,9 @@
+import { XyzTransition } from "@animxyz/react";
 import { FC } from "preact/compat";
 import { useState } from "react";
 import { X } from "react-feather";
 import { PageRoutes, useRouterStore } from "../../../lib/store/router.store";
 import SystemButton from "../Button";
-import { XyzTransition } from "@animxyz/react";
 
 interface TutorialOverlayProps {
   title?: string;
