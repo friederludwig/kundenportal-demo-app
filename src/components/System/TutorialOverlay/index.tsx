@@ -16,6 +16,7 @@ interface TutorialOverlayProps {
   };
   clipPath?: string;
   clipHeight?: string;
+  clipWidth?: string;
   forPage?: PageRoutes;
 }
 
@@ -26,6 +27,7 @@ const TutorialOverlay: FC<TutorialOverlayProps> = ({
   forPage,
   clipPath,
   clipHeight,
+  clipWidth,
 }) => {
   const routerStore = useRouterStore();
   const hasVisited = routerStore.visitedLinks.includes(forPage);
@@ -47,6 +49,7 @@ const TutorialOverlay: FC<TutorialOverlayProps> = ({
         style={{
           clipPath: clipPath,
           height: clipHeight || "900px",
+          maxWidth: clipWidth || "1560px",
           backdropFilter: "brightness(180%)",
         }}
       ></div>

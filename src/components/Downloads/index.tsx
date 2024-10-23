@@ -290,6 +290,7 @@ const Downloads: FC = () => {
         description="Nutzen Sie die klaren Verwaltungsoptionen, um den Zugriff auf Ihre Daten zu steuern und wichtige Berechtigungen anzupassen."
         clipPath="inset(425px 20px 0 280px round 15px)"
         clipHeight="1000px"
+        clipWidth="1555px"
         tooltip={{ top: "13rem", left: "17rem", icon: <Eye size={20} /> }}
         forPage={PageRoutes.DOWNLOAD_OVERVIEW}
       />
