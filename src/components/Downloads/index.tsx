@@ -286,7 +286,7 @@ const Downloads: FC = () => {
       </Container>
 
       <TutorialOverlay
-        title="Behalten Sie den Überblick Ihrer Daren"
+        title="Behalten Sie den Überblick Ihrer Daten"
         description="Nutzen Sie die klaren Verwaltungsoptionen, um den Zugriff auf Ihre Daten zu steuern und wichtige Berechtigungen anzupassen."
         clipPath="inset(425px 20px 0 280px round 15px)"
         clipHeight="1000px"
