@@ -8,7 +8,7 @@ export const getContainerStyles = ({sticky, noPadding}: ContainerProps) => ({
         'border',
         'shadow rounded-lg overflow-hidden',
         noPadding? "": "p-4",
-        sticky ? "sticky top-16 z-30 border-b-2":""
+        sticky ? "sticky top-16 z-10 border-b-2":""
     ),
     title: classNames(
         'text-lg font-semibold ml-1 mb-5 text-black',

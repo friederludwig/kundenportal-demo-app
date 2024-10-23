@@ -7,10 +7,12 @@ interface LinkRouterProps {
     className?: string;
 }
 
-const LinkRouter: FC<LinkRouterProps> = ({route, children, className}) => {
-    const setPageActive = useRouterStore(state => state.setActive);
+const LinkRouter: FC<LinkRouterProps> = ({ route, children, className }) => {
+    const routerStore = useRouterStore();
     return (
-        <button className={className} onClick={() => setPageActive(route)}>
+        <button className={className} onClick={() => {
+            routerStore.setActive(route)
+        }}>
             {children}
         </button>
     )

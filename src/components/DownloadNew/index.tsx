@@ -14,6 +14,8 @@ import Multiselect, { SelectOption } from "../System/Form/Multiselect";
 import Singleselect from "../System/Form/Singleselect";
 import TextInput from "../System/Form/TextInput";
 import SystemAlert from "../System/SystemAlert";
+import TutorialOverlay from "../System/TutorialOverlay";
+import { PageRoutes } from "../../lib/store/router.store";
 
 interface DownloadFormValues {
     title: string;
@@ -294,6 +296,14 @@ const DownloadNew: FC = () => {
                     <SystemButton>Speichern und schließen</SystemButton>
                 </div>
             </Container>
+
+            <TutorialOverlay
+                title='Wählen Sie Ihre Empfängergruppen und planen Sie die Veröffentlichung'
+                description='Verwenden Sie die intuitiven Verwaltungsoptionen, um Ihre Empfängergruppen auszuwählen und den Veröffentlichungszeitpunkt Ihrer Dateien festzulegen. So optimieren Sie die Verteilung Ihrer Informationen!'
+                focusPoint={{ size: 160, left: 440, top: 900 }}
+                forPage={PageRoutes.DOWNLOAD_NEW}
+            />
+
         </div>
     )
 }

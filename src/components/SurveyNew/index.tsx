@@ -8,6 +8,8 @@ import SystemAlert from '../System/SystemAlert';
 import Multiselect, { SelectOption } from '../System/Form/Multiselect';
 import TextInput from '../System/Form/TextInput';
 import FormGroup from '../System/Form/FormGroup';
+import { PageRoutes } from '../../lib/store/router.store';
+import TutorialOverlay from '../System/TutorialOverlay';
 
 interface SurveyFormValues {
     title: string,
@@ -48,7 +50,7 @@ const SurveyNew: FC = () => {
                         icon={<Info className="text-primary-600" size={25} />} />
                 </div>
             </Container>
-            
+
             <Container title="Neue Umfrage erstellen">
                 <div className="absolute right-5 top-4 flex gap-2 items-center">
                     <p className="text-sm text-gray-500">Entwurf automatisch gespeichert</p>
@@ -81,6 +83,13 @@ const SurveyNew: FC = () => {
                     Speichern und schließen
                 </SystemButton>
             </Container>
+
+            <TutorialOverlay
+                title='Erstellen Sie ganz einfach Umfragen mit unterschiedlichen Fragetypen!'
+                description='Nutzen Sie die intuitiven Optionen, um verschiedene Fragetypen hinzuzufügen und Ihre Umfrage individuell zu gestalten. So sammeln Sie wertvolle Informationen auf effektive Weise!'
+                focusPoint={{ size: 170, left: 440, top: 720 }}
+                forPage={PageRoutes.SURVEY_NEW}
+            />
         </div>
     );
 };

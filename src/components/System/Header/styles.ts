@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 export const getHeaderStyles = () => ({
     wrapper: classNames(
-        'fixed z-40 w-full bg-black h-[4rem] px-4 flex items-center justify-between',
+        'fixed z-50 w-full bg-black h-[4rem] px-4 flex items-center justify-between',
     ),
     logo: classNames(
         'text-white uppercase text-2xl tracking-wider font-bold',

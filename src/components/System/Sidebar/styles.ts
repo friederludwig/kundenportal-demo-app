@@ -5,7 +5,7 @@ import { PageRoutes } from '../../../lib/store/router.store';
 export const getSidebarStyles = (currentSubmenuOpen: SidebarSection[] | null, currentPageActive?: PageRoutes) => ({
         wrapper: classNames(
             'h-full w-[16rem] pt-16',
-            'fixed left-0 top-0 z-30',
+            'fixed left-0 top-0 z-40',
             'pb-6',
             'bg-black',
             'overflow-y-scroll',

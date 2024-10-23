@@ -10,6 +10,8 @@ import { Archive, ArrowDownCircle, ArrowUp, EyeOff, FileText, Film, Image, Info,
 import SystemButton from '../System/Button';
 import Container from "../System/Container";
 import { assetPackages, AssetType } from "./downloads";
+import TutorialOverlay from '../System/TutorialOverlay';
+import { PageRoutes } from '../../lib/store/router.store';
 
 export const assetTypeIcons = {
     [AssetType.PDF]: <FileText size={18} />,
@@ -242,6 +244,13 @@ const Downloads: FC = () => {
                     ))}
                 </div>
             </Container >
+
+            <TutorialOverlay
+                title='Behalten Sie den Überblick darüber, wer Ihre Daten heruntergeladen hat, und verwalten Sie die Berechtigungen effektiv!'
+                description='Nutzen Sie die klaren Verwaltungsoptionen, um den Zugriff auf Ihre Daten zu steuern und wichtige Berechtigungen anzupassen. So behalten Sie die Kontrolle über Ihre Informationen und deren Nutzung!'
+                focusPoint={{ size: 150, left: 420, top: 800 }}
+                forPage={PageRoutes.DOWNLOAD_OVERVIEW}
+            />
         </div >
     );
 };

@@ -11,6 +11,7 @@ import SurveyTable from './SurveyTable';
 
 import { PageRoutes } from '../../lib/store/router.store';
 import LinkRouter from '../System/LinkRouter';
+import TutorialOverlay from '../System/TutorialOverlay';
 
 const SurveyDashboard: FC = () => {
     return (
@@ -65,6 +66,13 @@ const SurveyDashboard: FC = () => {
             <Container title="Aktuelle Umfragen" actions={<TableDemoTieredMenu />}>
                 <SurveyTable />
             </Container>
+
+            <TutorialOverlay
+                title='Erleben Sie umfassende Berichte und individuelle Analysen in Echtzeit!'
+                description='Nutzen Sie die Filteroptionen, um Ihre Produktauswahl präzise anzupassen. Alle Ergebnisse werden in Echtzeit aktualisiert, damit Sie schnell und gezielt zu den gewünschten Informationen gelangen!'
+                focusPoint={{ size: 240, left: 550, top: 600 }}
+                forPage={PageRoutes.SURVEY_DASHBOARD}
+            />
         </div>
     );
 };
