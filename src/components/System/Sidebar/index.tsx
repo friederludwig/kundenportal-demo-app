@@ -29,7 +29,7 @@ const Sidebar: FC = () => {
 
   return (
     <div
-      className={`${styles.wrapper} ${configStore.sidebarVisible ? "" : "-translate-x-full"}`}
+      className={`${styles.wrapper} ${configStore.sidebarVisible ? "" : "_-translate-x-full"}`}
     >
       <ul className="border-l-2 border-primary/50">
         {SIDEBAR_NAVIGATION.map((section) => (
