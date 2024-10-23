@@ -246,7 +246,7 @@ const Downloads: FC = () => {
             </Container >
 
             <TutorialOverlay
-                title='Behalten Sie den Überblick darüber, wer Ihre Daten heruntergeladen hat, und verwalten Sie die Berechtigungen effektiv!'
+                title='Behalten Sie den Überblick darüber, wer Ihre Daten heruntergeladen hat, und verwalten Sie die Berechtigungen'
                 description='Nutzen Sie die klaren Verwaltungsoptionen, um den Zugriff auf Ihre Daten zu steuern und wichtige Berechtigungen anzupassen. So behalten Sie die Kontrolle über Ihre Informationen und deren Nutzung!'
                 focusPoint={{ size: 150, left: 420, top: 800 }}
                 forPage={PageRoutes.DOWNLOAD_OVERVIEW}

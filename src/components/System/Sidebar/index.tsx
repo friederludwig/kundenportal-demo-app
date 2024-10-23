@@ -5,6 +5,7 @@ import { ArrowDown, HelpCircle, Settings } from 'react-feather';
 
 import LinkRouter from '../LinkRouter';
 import { useRouterStore } from '../../../lib/store/router.store';
+import { useConfigStore } from '../../../lib/store/config.store';
 
 export type SidebarSection = "survey" | "self-service" | "distribution";
 
@@ -12,16 +13,15 @@ const Sidebar: FC = () => {
     const [openMenuSections, setCurrentSubmenuOpen] = useState<SidebarSection[]>(["distribution" , "survey", "self-service"])
     const currentPageActive = useRouterStore(state => state.activePage);
     const styles = getSidebarStyles(openMenuSections, currentPageActive);
+    const configStore = useConfigStore();
 
     const handleCurrentSubmenuOpen = (submenu: SidebarSection) => {
         setCurrentSubmenuOpen(current => (!current?.includes(submenu)
             ? [...current, submenu] : current.filter(s => s !== submenu)))
     }
 
-    const sidebarMinimized = true;
-
     return (
-        <div className={styles.wrapper}>
+        <div className={`${styles.wrapper} ${configStore.sidebarVisible ? "": "max-xl:-translate-x-full"}`}>
             <ul className="border-l-2 border-primary/50">
                 {SIDEBAR_NAVIGATION.map(section => (
                     <li className={styles.section}>

@@ -1,6 +1,6 @@
 import { FC } from "preact/compat";
 import SystemButton from "../Button";
-import { X } from "react-feather";
+import { AlertCircle, X } from "react-feather";
 import { useState } from "react";
 import { PageRoutes, useRouterStore } from "../../../lib/store/router.store";
 
@@ -30,7 +30,7 @@ const TutorialOverlay: FC<TutorialOverlayProps> = ({ title, description, focusPo
     }
     
     return (
-        <div className="fixed top-0 left-0 bg-black/60 w-full h-dvh z-30">
+        <div className="absolute top-0 left-0 bg-black/60 w-full h-full z-30">
             <div
                 className="absolute top-0 left-0 w-full h-full"
                 style={{
@@ -46,7 +46,9 @@ const TutorialOverlay: FC<TutorialOverlayProps> = ({ title, description, focusPo
                 }}
             >
                 <div className="relative z-10">
-                    <h4 className="font-semibold text-lg mb-2">{title}</h4>
+                    <h4 className="font-semibold text-lg mb-2">
+                        {title}
+                        </h4>
                     <p className="text-sm mb-4 text-gray-500">{description}</p>
                     <SystemButton onClick={() => handleOnClose()}>Verstanden</SystemButton>
                 </div>

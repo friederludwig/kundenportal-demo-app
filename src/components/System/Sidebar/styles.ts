@@ -10,6 +10,7 @@ export const getSidebarStyles = (currentSubmenuOpen: SidebarSection[] | null, cu
             'bg-black',
             'overflow-y-scroll',
             'flex flex-col justify-between',
+            'transition',
         ),
         section: classNames(
             'relative px-6 py-2',

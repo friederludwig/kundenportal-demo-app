@@ -298,12 +298,11 @@ const DownloadNew: FC = () => {
             </Container>
 
             <TutorialOverlay
-                title='Wählen Sie Ihre Empfängergruppen und planen Sie die Veröffentlichung'
-                description='Verwenden Sie die intuitiven Verwaltungsoptionen, um Ihre Empfängergruppen auszuwählen und den Veröffentlichungszeitpunkt Ihrer Dateien festzulegen. So optimieren Sie die Verteilung Ihrer Informationen!'
-                focusPoint={{ size: 160, left: 440, top: 900 }}
+                title='Erstellen Sie ein Asset Bundle und verwalten Sie den Zugriff auf die einzelnen Assets!'
+                description='Nutzen Sie die benutzerfreundlichen Verwaltungsoptionen, um Ihre Empfängergruppen auszuwählen und den Zugriff auf spezifische Assets innerhalb des Bundles zu steuern. So stellen Sie sicher, dass Ihre Informationen gezielt verteilt werden!'
+                focusPoint={{ size: 150, left: 420, top: 700 }}
                 forPage={PageRoutes.DOWNLOAD_NEW}
             />
-
         </div>
     )
 }
