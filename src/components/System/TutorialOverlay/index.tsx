@@ -50,10 +50,10 @@ const TutorialOverlay: FC<TutorialOverlayProps> = ({
           clipPath: clipPath,
           height: clipHeight || "900px",
           maxWidth: clipWidth || "1560px",
-          backdropFilter: "brightness(180%)",
+          backdropFilter: "brightness(185%)",
         }}
       ></div>
-      <XyzTransition appear xyz="fade">
+      <XyzTransition xyz="fade">
         <div
           className="absolute max-w-[520px] p-6 pr-8 bg-white rounded-md"
           style={{

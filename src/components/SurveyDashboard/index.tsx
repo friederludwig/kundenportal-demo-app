@@ -17,16 +17,11 @@ const SurveyDashboard: FC = () => {
     <div className="grid gap-4">
       <Container sticky>
         <div className="flex items-center justify-between gap-4">
-          <h1 className="text-xl font-semibold">Umfragen Dashboard</h1>
+          <h1 className="text-xl font-semibold">Dashboard: Analyse der aktuellen Umfragen</h1>
           <div className="flex items-center gap-3">
-            <LinkRouter className="relative" route={PageRoutes.SURVEY_LIST}>
-              <SystemButton style="primary-negative">
-                <List size={18} /> Alle Umfragen
-              </SystemButton>
-            </LinkRouter>
             <LinkRouter className="relative" route={PageRoutes.SURVEY_NEW}>
               <SystemButton style="primary">
-                <PlusCircle size={20} /> Neue Umfrage
+                <PlusCircle size={20} /> Neue Umfrage starten
               </SystemButton>
             </LinkRouter>
           </div>

@@ -9,7 +9,6 @@ import { useState } from "react";
 import {
   Archive,
   ArrowDownCircle,
-  ArrowUp,
   Eye,
   EyeOff,
   FileText,
@@ -18,13 +17,13 @@ import {
   Info,
   MoreVertical,
   Search,
-  Upload,
+  Upload
 } from "react-feather";
+import { PageRoutes } from "../../lib/store/router.store";
 import SystemButton from "../System/Button";
 import Container from "../System/Container";
-import { assetPackages, AssetType } from "./downloads";
 import TutorialOverlay from "../System/TutorialOverlay";
-import { PageRoutes } from "../../lib/store/router.store";
+import { AssetPackage, assetPackages, AssetType } from "./downloads";
 
 export const assetTypeIcons = {
   [AssetType.PDF]: <FileText size={18} />,
@@ -37,6 +36,8 @@ const Downloads: FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(2);
   const [chatMessages, setChatMessages] = useState<{ [key: number]: string[] }>({});
   const [newMessage, setNewMessage] = useState<{ [key: number]: string }>({});
+  const [packages, setPackages] = useState<AssetPackage[] | null>(assetPackages);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -52,20 +53,13 @@ const Downloads: FC = () => {
     }
   };
 
-  const getDownloadChartData = (downloads) => {
-    // Group and count downloads by date
-    const downloadsByDate = downloads.reduce((acc, download) => {
-      const downloadDate = format(download.downloadedAt, "yyyy-MM-dd");
-      if (!acc[downloadDate]) acc[downloadDate] = 0;
-      acc[downloadDate] += 1;
-      return acc;
-    }, {});
-
-    return Object.entries(downloadsByDate).map(([date, count]) => ({
-      date,
-      downloads: count,
-    }));
-  };
+  const handleSearchQueryChange = (query: string) => {
+    const filtered = assetPackages.filter(p =>
+      p.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setPackages(filtered);
+    setSearchQuery(query)
+  }
 
   return (
     <div className="grid gap-4">
@@ -84,24 +78,24 @@ const Downloads: FC = () => {
               <Search size={22} />
             </InputIcon>
             <InputText
-              value=""
+              value={searchQuery}
               placeholder="Downloads durchsuchen ..."
               className="w-full p-3 border pl-11 bg-gray-100/70 focus:bg-white"
+              onChange={(e) => handleSearchQueryChange(e.target.value)}
             />
           </IconField>
         </div>
+
         <div className="grid gap-3">
-          {assetPackages.map((assetPackage, index) => (
+          {packages.map((assetPackage, index) => (
             <div
               key={index}
-              className={`${
-                activeIndex === index ? "border-gray-400" : ""
-              } border rounded-lg overflow-hidden group hover:border-gray-400 transition`}
+              className={`${activeIndex === index ? "border-gray-400" : ""
+                } border rounded-lg overflow-hidden group hover:border-gray-400 transition`}
             >
               <div
-                className={`${
-                  activeIndex === index ? " bg-gray-600" : ""
-                } w-full px-4 focus:outline-none flex justify-between items-center`}
+                className={`${activeIndex === index ? " bg-gray-600" : ""
+                  } w-full px-4 focus:outline-none flex justify-between items-center`}
               >
                 <button
                   onClick={() => toggleAccordion(index)}
@@ -113,9 +107,8 @@ const Downloads: FC = () => {
                     </div>
                   )}
                   <span
-                    className={`${
-                      activeIndex === index ? "text-white" : "text-gray-600"
-                    } font-medium`}
+                    className={`${activeIndex === index ? "text-white" : "text-gray-600"
+                      } font-medium`}
                   >
                     {assetPackage.title}
                   </span>

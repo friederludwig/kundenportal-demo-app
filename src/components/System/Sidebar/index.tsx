@@ -7,13 +7,15 @@ import LinkRouter from "../LinkRouter";
 import { useRouterStore } from "../../../lib/store/router.store";
 import { useConfigStore } from "../../../lib/store/config.store";
 
-export type SidebarSection = "survey" | "self-service" | "distribution";
+export type SidebarSection = "survey" | "self-service" | "distribution" | "system-integration" | "configurations";
 
 const Sidebar: FC = () => {
   const [openMenuSections, setCurrentSubmenuOpen] = useState<SidebarSection[]>([
     "distribution",
     "survey",
     "self-service",
+    "system-integration",
+    "configurations",
   ]);
   const currentPageActive = useRouterStore((state) => state.activePage);
   const styles = getSidebarStyles(openMenuSections, currentPageActive);
@@ -46,30 +48,26 @@ const Sidebar: FC = () => {
             {openMenuSections?.includes(section.name) && (
               <ul className={styles.submenu}>
                 {section.children.map((sectionLink) => (
-                  <>
-                    {sectionLink.route && (
-                      <li
-                        className={`relative group ${
-                          !sectionLink.route ? "opacity-70" : "group-hover:bg-primary/40"
-                        }`}
+                  <li
+                    className={`relative group ${!sectionLink.route ? "opacity-70" : "group-hover:bg-primary/40"
+                      }`}
+                  >
+                    <div className={styles.linkActiveIndicator(sectionLink.route)}></div>
+                    {sectionLink.route ? (
+                      <LinkRouter
+                        className={styles.sectionLink(sectionLink.route)}
+                        route={sectionLink.route}
                       >
-                        <div className={styles.linkActiveIndicator(sectionLink.route)}></div>
-                        {sectionLink.route ? (
-                          <LinkRouter
-                            className={styles.sectionLink(sectionLink.route)}
-                            route={sectionLink.route}
-                          >
-                            <span className="opacity-70">{sectionLink.icon}</span>
-                            {sectionLink.title}
-                          </LinkRouter>
-                        ) : (
-                          <div className={styles.sectionLink(sectionLink.route)}>
-                            <span className="cursor-default">{sectionLink.title}</span>
-                          </div>
-                        )}
-                      </li>
+                        <span className="opacity-70">{sectionLink.icon}</span>
+                        {sectionLink.title}
+                      </LinkRouter>
+                    ) : (
+                      <div className={styles.sectionLink(sectionLink.route)}>
+                        <span className="opacity-60">{sectionLink.icon}</span>
+                        <span className="opacity-70">{sectionLink.title}</span>
+                      </div>
                     )}
-                  </>
+                  </li>
                 ))}
               </ul>
             )}

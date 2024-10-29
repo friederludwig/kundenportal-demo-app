@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Download, Grid, List, PieChart, PlusSquare } from 'react-feather';
+import { Activity, Codepen, Download, FilePlus, FolderPlus, Grid, List, PieChart, Play, PlusSquare, RefreshCw, Settings, Sliders, Users } from 'react-feather';
 import { PageRoutes } from '../../../lib/store/router.store';
 import { SidebarSection } from './index';
 
@@ -16,32 +16,19 @@ interface SidebarMenuLink {
 }
 
 
+interface SidebarMenuSection {
+    name: SidebarSection;
+    title: string;
+    children: SidebarMenuLink[];
+}
+
+interface SidebarMenuLink {
+    title: string,
+    route: PageRoutes | null,
+    icon?: ReactNode;
+}
+
 export const SIDEBAR_NAVIGATION: SidebarMenuSection[] = [
-    {
-        name: "survey",
-        title: "Umfragen",
-        children: [
-            {
-                title: "Neue Umfrage",
-                route: PageRoutes.SURVEY_NEW,
-                icon: <PlusSquare size={18} />,
-            },
-            {
-                title: "Dashboard",
-                route: PageRoutes.SURVEY_DASHBOARD,
-                icon: <PieChart size={18} />,
-            },
-            {
-                title: "Alle Umfragen",
-                route: null, //PageRoutes.SURVEY_LIST,
-                icon: <List size={18} />,
-            },
-            {
-                title: "Teilnehmer",
-                route: null,
-            },
-        ]
-    },
     {
         name: "distribution",
         title: "Produkte",
@@ -52,8 +39,56 @@ export const SIDEBAR_NAVIGATION: SidebarMenuSection[] = [
                 icon: <Grid size={18} />,
             },
             {
-                title: "Neues Produkt",
+                title: "Import/Export",
                 route: null,
+                icon: <RefreshCw size={18} />,
+            },
+        ]
+    },
+    {
+        name: "configurations",
+        title: "Konfigurator",
+        children: [
+            {
+                title: "Dashboard",
+                route: null,
+                icon: <PieChart size={18} />,
+            },
+            {
+                title: "Einstellungen",
+                route: null,
+                icon: <Sliders size={18} />,
+            },
+        ]
+    },
+    {
+        name: "survey",
+        title: "Umfragen",
+        children: [
+            {
+                title: "Dashboard",
+                route: PageRoutes.SURVEY_DASHBOARD,
+                icon: <PieChart size={18} />,
+            },
+            {
+                title: "Empfängergruppen",
+                route: null, 
+                icon: <Users size={18} />,
+            },
+            {
+                title: "Aktive Umfragen",
+                route: null, 
+                icon: <Play size={18} />,
+            },
+            {
+                title: "Analyse",
+                route: null, 
+                icon: <Activity size={18} />,
+            },
+            {
+                title: "Neue Umfrage",
+                route: PageRoutes.SURVEY_NEW,
+                icon: <PlusSquare size={18} />,
             },
         ]
     },
@@ -67,10 +102,26 @@ export const SIDEBAR_NAVIGATION: SidebarMenuSection[] = [
                 icon: <Download size={18} />,
             },
             {
-                title: "Neues Bundle",
+                title: "Neuer Ordner",
                 route: PageRoutes.DOWNLOAD_NEW,
-                icon: <PlusSquare size={18} />,
+                icon: <FolderPlus size={18} />,
             },
         ]
     },
-]
+    {
+        name: "system-integration",
+        title: "Systemintegration",
+        children: [
+            {
+                title: "Anbindung CRM/ERP",
+                route: null,
+                icon: <Codepen size={18} />,
+            },
+            {
+                title: "Import/Export",
+                route: null,
+                icon: <RefreshCw size={18} />,
+            },
+        ]
+    }
+];

@@ -27,6 +27,7 @@ export const getSidebarStyles = (currentSubmenuOpen: SidebarSection[] | null, cu
             'relative text-white py-2 flex gap-2.5 items-center w-full tracking-wide text-[0.95rem]',
             'leading-none py-3.5',
             section === currentPageActive ? 'font-semibold' : '',
+            !section ? 'cursor-not-allowed' : '',
         ),
         submenu: classNames(
             'mt-1',
