@@ -12,10 +12,7 @@ const Products: FC = () => {
       <Container>
         <div className="flex items-center justify-between gap-4">
           <h1 className="text-2xl font-semibold">Produktkatalog</h1>
-          <div className="flex items-center gap-2">
-            <SystemButton style="primary-negative">Neues Produkt</SystemButton>
-            <SystemButton style="primary-negative">Anbindungen</SystemButton>
-          </div>
+
         </div>
       </Container>
 
@@ -25,7 +22,7 @@ const Products: FC = () => {
       <TutorialOverlay
         title="Nutzen Sie spezifische Filter und Suche"
         description="Nutzen Sie den Filter, um die Auswahl nach Ihren Wünschen einzugrenzen. Die Ergebnisse werden in Echtzeit aktualisiert."
-        clipPath="inset(160px 10px 620px 265px round 15px)"
+        clipPath="inset(155px 12px 628px 265px round 15px)"
         tooltip={{
           top: "19.5rem",
           left: "17rem",

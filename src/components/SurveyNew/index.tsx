@@ -1,15 +1,14 @@
 import { FC } from "react";
-import SystemButton from "../System/Button";
+import { CheckCircle, Clipboard, Save } from "react-feather";
 import { useFormState } from "../../lib/hooks/useFormState";
+import { PageRoutes } from "../../lib/store/router.store";
+import SystemButton from "../System/Button";
 import Container from "../System/Container";
-import SurveyNewQuestionForm from "./SurveyNewQuestionForm";
-import { CheckCircle, Clipboard, Info, Save } from "react-feather";
-import SystemAlert from "../System/SystemAlert";
+import FormGroup from "../System/Form/FormGroup";
 import Multiselect, { SelectOption } from "../System/Form/Multiselect";
 import TextInput from "../System/Form/TextInput";
-import FormGroup from "../System/Form/FormGroup";
-import { PageRoutes } from "../../lib/store/router.store";
 import TutorialOverlay from "../System/TutorialOverlay";
+import SurveyNewQuestionForm from "./SurveyNewQuestionForm";
 
 interface SurveyFormValues {
   title: string;
@@ -39,23 +38,11 @@ const SurveyNew: FC = () => {
 
   return (
     <div className="grid gap-4">
-      {/*       <Container>
-        <div className="my-2">
-          <SystemAlert
-            title=" Hier können weitere nützliche Funktionen oder Eingabefelder hinzugefügt werden"
-            content="Diese Anwendung ist nur ein übersichtliches Beispiel für verbreitete Anwendungsfälle. Gerne
-                            arbeiten wir mit Ihnen an passenden individuellen Lösungen, optimal zugeschnitten auf Ihre
-                            Anforderungen."
-            icon={<Info className="text-primary-600" size={25} />}
-          />
-        </div>
-      </Container> */}
-
       <Container title="Neue Umfrage erstellen">
         <div className="absolute flex items-center gap-2 right-5 top-4">
-          <p className="text-sm text-gray-500">Entwurf automatisch gespeichert</p>
+          <p className="text-[0.75rem] text-gray-500">Entwurf automatisch gespeichert</p>
           <span className="text-primary-400">
-            <CheckCircle size={19} strokeWidth={2.5} />
+            <CheckCircle size={18} />
           </span>
         </div>
         <div className="my-2 space-y-8">

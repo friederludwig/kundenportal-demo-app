@@ -14,8 +14,6 @@ const Sidebar: FC = () => {
     "distribution",
     "survey",
     "self-service",
-    "system-integration",
-    "configurations",
   ]);
   const currentPageActive = useRouterStore((state) => state.activePage);
   const styles = getSidebarStyles(openMenuSections, currentPageActive);
@@ -75,13 +73,13 @@ const Sidebar: FC = () => {
         ))}
       </ul>
       <div>
-        <ul className="pl-5 mt-12 space-y-3 text-white cursor-default opacity-70">
-          <li className="flex gap-2.5 items-center mb-5">
-            <Settings size={18} />
+        <ul className="pl-5 mt-12 text-sm text-white cursor-default opacity-70">
+          <li className="flex gap-2.5 items-center mb-3.5">
+            <Settings size={16} />
             Einstellungen
           </li>
           <li className="flex gap-2.5 items-center">
-            <HelpCircle size={18} />
+            <HelpCircle size={16} />
             Hilfe & Support
           </li>
         </ul>

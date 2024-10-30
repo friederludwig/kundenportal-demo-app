@@ -79,24 +79,20 @@ const SurveyNewQuestionForm = () => {
   const [formValues, updateFormValue, resetForm] =
     useFormState<NewQuestionFormValues>(initFormValues);
 
-  // Separate state for managing options
-  const [options, setOptions] = useState<string[]>([""]); // Start with one option for MULTI_SELECT
+  const [options, setOptions] = useState<string[]>([""]);
 
-  // Function to update an individual option by index
   const updateOption = (index: number, value: string) => {
     const newOptions = [...options];
     newOptions[index] = value;
     setOptions(newOptions);
   };
 
-  // Function to add more options for MULTI_SELECT
   const addOption = () => {
     if (options.length < 10) {
-      setOptions([...options, ""]); // Add empty string for new option
+      setOptions([...options, ""]);
     }
   };
 
-  // Function to remove an option for MULTI_SELECT
   const removeOption = (index: number) => {
     if (options.length > 1) {
       const newOptions = options.filter((_, i) => i !== index);
@@ -113,15 +109,19 @@ const SurveyNewQuestionForm = () => {
           text: formValues.text,
           options:
             formValues.type?.key === QuestionTypes.SINGLE_SELECT ||
-            formValues.type?.key === QuestionTypes.MULTI_SELECT
+              formValues.type?.key === QuestionTypes.MULTI_SELECT
               ? options.filter((option) => option.trim()) // Only add non-empty options
               : undefined,
         } as Question,
       ]);
       resetForm();
-      setOptions([""]); // Reset options after adding question, start with one option again for MULTI_SELECT
+      setOptions([""])
     }
   };
+
+  const removeQuestion = (question: string) => {
+    setQuestions((prev) => prev.filter(q => q.text !== question));
+  }
 
   return (
     <div className="mb-10">
@@ -147,53 +147,53 @@ const SurveyNewQuestionForm = () => {
                 type?.key === QuestionTypes.SINGLE_SELECT ||
                 type?.key === QuestionTypes.MULTI_SELECT
               ) {
-                setOptions([""]); // Start with one option for SINGLE_SELECT or MULTI_SELECT
+                setOptions([""]);
               } else {
-                setOptions([]); // Clear options for TEXT input
+                setOptions([]);
               }
             }}
           />
           <div>
             {(formValues.type?.key === QuestionTypes.SINGLE_SELECT ||
               formValues.type?.key === QuestionTypes.MULTI_SELECT) && (
-              <div className="mb-4">
-                <div className="col-span-8">
-                  {options.map((option, i) => (
-                    <div className="flex items-center gap-4 mt-4" key={i}>
-                      <div>{i + 1}.</div>
-                      <TextInput
-                        name={`option-${i}`}
-                        placeholder="Antwort"
-                        className="w-full"
-                        value={option}
-                        onChange={(v) => updateOption(i, v)}
-                      />
+                <div className="mb-4">
+                  <div className="col-span-8">
+                    {options.map((option, i) => (
+                      <div className="flex items-center gap-4 mt-4" key={i}>
+                        <div>{i + 1}.</div>
+                        <TextInput
+                          name={`option-${i}`}
+                          placeholder="Antwort"
+                          className="w-full"
+                          value={option}
+                          onChange={(v) => updateOption(i, v)}
+                        />
 
-                      <SystemButton
-                        style="primary-negative"
-                        size="small"
-                        onClick={() => removeOption(i)}
-                        disabled={options.length <= 1} // Disable button if only one option remains
-                      >
-                        Entfernen
-                      </SystemButton>
-                    </div>
-                  ))}
+                        <SystemButton
+                          style="primary-negative"
+                          size="small"
+                          onClick={() => removeOption(i)}
+                          disabled={options.length <= 1}
+                        >
+                          Entfernen
+                        </SystemButton>
+                      </div>
+                    ))}
 
-                  {/* Button to add more options for SINGLE_SELECT or MULTI_SELECT, max 10 */}
-                  {(formValues.type?.key === QuestionTypes.SINGLE_SELECT ||
-                    formValues.type?.key === QuestionTypes.MULTI_SELECT) &&
-                    options.length < MAX_MULTI_SELECT_OPTIONS && (
-                      <button
-                        className="my-3 text-sm text-gray-500 underline ml-7"
-                        onClick={addOption}
-                      >
-                        Weitere Option hinzufügen
-                      </button>
-                    )}
+                    {/* Button to add more options for SINGLE_SELECT or MULTI_SELECT, max 10 */}
+                    {(formValues.type?.key === QuestionTypes.SINGLE_SELECT ||
+                      formValues.type?.key === QuestionTypes.MULTI_SELECT) &&
+                      options.length < MAX_MULTI_SELECT_OPTIONS && (
+                        <button
+                          className="my-3 text-sm text-gray-500 underline ml-7"
+                          onClick={addOption}
+                        >
+                          Weitere Option hinzufügen
+                        </button>
+                      )}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
         </div>
         <SystemButton
@@ -202,7 +202,7 @@ const SurveyNewQuestionForm = () => {
           className="mt-2"
           onClick={() => addQuestion()}
         >
-          <Plus size={16} strokeWidth={3} />
+          <Plus size={18} />
           Frage hinzufügen
         </SystemButton>
       </div>
@@ -210,7 +210,7 @@ const SurveyNewQuestionForm = () => {
       <div className="my-2"></div>
 
       <FormGroup title="Fragebogen">
-        <SurveyQuestionsRenderer questions={questions} />
+        <SurveyQuestionsRenderer questions={questions} removeQuestion={removeQuestion} />
       </FormGroup>
     </div>
   );

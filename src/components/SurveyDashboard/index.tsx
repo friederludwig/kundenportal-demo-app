@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { Info, List, PlusCircle } from "react-feather";
+import { Info, PlusCircle } from "react-feather";
 import SystemButton from "../System/Button";
 import Container from "../System/Container";
 import SystemAlert from "../System/SystemAlert";
-import TableDemoTieredMenu from "../System/TableDemoTieredMenu";
+import TableDemoTieredMenu from "./TableDemoTieredMenu";
 import ExampleBubbleChart from "./ExampleBubbleChart";
 import SurveyOverviewChart from "./ExampleLineChart";
 import SurveyBarChart from "./SurveyBarChart";

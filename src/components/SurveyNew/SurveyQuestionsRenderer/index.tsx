@@ -1,20 +1,19 @@
 import { useState } from 'preact/hooks';
+import { Button } from 'primereact/button';
 import { Checkbox } from 'primereact/checkbox';
 import { RadioButton } from 'primereact/radiobutton';
+import { AlertCircle, Trash2 } from 'react-feather';
 import { getQuestionLabel, Question } from '../SurveyNewQuestionForm';
-import { AlertCircle, Edit, Info } from 'react-feather';
-import { Button } from 'primereact/button';
-import { Tooltip } from 'primereact/tooltip';
 
 interface SurveyQuestionsRendererProps {
     questions: Question[];
+    removeQuestion: (q: string) => void;
 }
 
-const SurveyQuestionsRenderer = ({ questions }: SurveyQuestionsRendererProps) => {
+const SurveyQuestionsRenderer = ({ questions, removeQuestion }: SurveyQuestionsRendererProps) => {
     const [selectedRadioValues, setSelectedRadioValues] = useState<Record<number, string>>({});
     const [selectedCheckboxValues, setSelectedCheckboxValues] = useState<Record<number, string[]>>({});
 
-    // Handler to update the selected radio value for a specific question
     const handleRadioChange = (questionIndex: number, value: string) => {
         setSelectedRadioValues((prev) => ({
             ...prev,
@@ -22,15 +21,14 @@ const SurveyQuestionsRenderer = ({ questions }: SurveyQuestionsRendererProps) =>
         }));
     };
 
-    // Handler to update the selected checkbox values for a specific question
     const handleCheckboxChange = (questionIndex: number, option: string) => {
         setSelectedCheckboxValues((prev) => {
             const currentValues = prev[questionIndex] || [];
             const isSelected = currentValues.includes(option);
 
             const updatedValues = isSelected
-                ? currentValues.filter((v) => v !== option) // Remove if already selected
-                : [...currentValues, option]; // Add if not selected
+                ? currentValues.filter((v) => v !== option) 
+                : [...currentValues, option]; 
 
             return {
                 ...prev,
@@ -86,16 +84,11 @@ const SurveyQuestionsRenderer = ({ questions }: SurveyQuestionsRendererProps) =>
                                         ))}
                                     </div>
                                 )}
-                                <Tooltip position="left" target=".custom-tooltip-btn">
-                                    <div className="flex items-center gap-2">
-                                        <Info size={16} />
-                                        <p className="text-xs">Diese Funktion ist in der Demo deaktiviert</p>
-                                    </div>
-                                </Tooltip>
                                 <Button rounded
                                     severity="secondary"
-                                    className="custom-tooltip-btn absolute right-3 top-2 text-stone-400 p-1">
-                                    <Edit size={20} />
+                                    onClick={() => removeQuestion(question.text)}
+                                    className="custom-tooltip-btn absolute right-3 top-2 text-stone-500 p-1">
+                                    <Trash2 size={18} />
                                 </Button>
                             </div>
                         </li>

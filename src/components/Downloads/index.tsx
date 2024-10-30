@@ -16,6 +16,7 @@ import {
   Image,
   Info,
   MoreVertical,
+  PlusCircle,
   Search,
   Upload
 } from "react-feather";
@@ -24,6 +25,9 @@ import SystemButton from "../System/Button";
 import Container from "../System/Container";
 import TutorialOverlay from "../System/TutorialOverlay";
 import { AssetPackage, assetPackages, AssetType } from "./downloads";
+import UserDemoTieredMenu from "./UserDemoTieredMenu";
+import FileDemoTieredMenu from "./FileDemoTieredMenu";
+import LinkRouter from "../System/LinkRouter";
 
 export const assetTypeIcons = {
   [AssetType.PDF]: <FileText size={18} />,
@@ -67,7 +71,11 @@ const Downloads: FC = () => {
         <div className="flex items-center justify-between gap-4">
           <h1 className="text-2xl font-semibold">Asset Management</h1>
           <div className="flex items-center gap-2">
-            <SystemButton style="primary-negative">Neues Bundle erstellen</SystemButton>
+            <LinkRouter className="relative" route={PageRoutes.DOWNLOAD_NEW}>
+              <SystemButton style="primary-negative">
+                <PlusCircle size={18} /> Neuen Ordner erstellen
+              </SystemButton>
+            </LinkRouter>
           </div>
         </div>
       </Container>
@@ -155,13 +163,7 @@ const Downloads: FC = () => {
                           <div className="flex items-center gap-2 text-xs tracking-wide text-gray-400 ">
                             <div>{item.size}</div>
                             <div>
-                              <Button
-                                rounded
-                                severity="secondary"
-                                className="p-1 text-gray-400"
-                              >
-                                <MoreVertical size={18} />
-                              </Button>
+                              <FileDemoTieredMenu />
                             </div>
                           </div>
                           <div className="">
@@ -198,12 +200,16 @@ const Downloads: FC = () => {
                         class="flex items-center even:bg-gray-50 rounded px-2 p-1 space-x-2 justify-between"
                       >
                         <div className="flex items-center gap-3">
-                          <img
-                            src={download.userImage}
-                            alt={download.username}
-                            class="w-7 h-7 rounded-full border border-gray-200"
-                          />
-                          <span className="text-sm text-gray-600">{download.username}</span>
+                          <UserDemoTieredMenu>
+                            <>
+                              <img
+                                src={download.userImage}
+                                alt={download.username}
+                                class="w-7 h-7 rounded-full border border-gray-200"
+                              />
+                              <span className="text-sm text-gray-600">{download.username}</span>
+                            </>
+                          </UserDemoTieredMenu>
                         </div>
                         <div className="flex w-[30%] justify-end pr-2">
                           <div className="flex items-center gap-8 text-xs tracking-wide text-gray-400">

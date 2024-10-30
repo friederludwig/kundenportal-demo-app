@@ -14,8 +14,6 @@ import Multiselect, { SelectOption } from "../System/Form/Multiselect";
 import Singleselect from "../System/Form/Singleselect";
 import TextInput from "../System/Form/TextInput";
 import SystemAlert from "../System/SystemAlert";
-import TutorialOverlay from "../System/TutorialOverlay";
-import { PageRoutes } from "../../lib/store/router.store";
 
 interface DownloadFormValues {
   title: string;
@@ -154,10 +152,7 @@ const uploadedFiles: AssetItem[] = [
 
 const DownloadNew: FC = () => {
   const [formValues, updateFormValue] = useFormState<DownloadFormValues>(initFormValues);
-
-  const handleFileUpload = (files: File[]) => {
-    console.log(files);
-  };
+  const handleFileUpload = (files: File[]) => { };
 
   return (
     <div className="grid gap-4">
@@ -176,7 +171,7 @@ const DownloadNew: FC = () => {
         </div>
       </Container>
 
-      <Container title="Neues Asset Bundle erstellen">
+      <Container title="Neuen Ordner für Assets erstellen">
         <div className="grid grid-cols-2 gap-4">
           <TextInput
             name="title"
@@ -289,18 +284,18 @@ const DownloadNew: FC = () => {
         <FormGroup title="Veröffentlichung planen">
           <div className="grid grid-cols-2 gap-4 mb-7">
             <Calendar
-              className="[&_input]:w-full [&_input]:p-2.5 [&_input]:border [&_input]:"
-              value={new Date(formValues.publishedAt)}
-              onChange={(e) => updateFormValue("publishedAt", e.value)}
+              className="[&_input]:w-full [&_input]:p-2.5 [&_input]:border [&_button]:bg-primary-300 [&_button]:text-white"
+              value={formValues.publishedAt ? new Date(formValues.publishedAt) : null}
+              onChange={(e) => updateFormValue("publishedAt", e.target.value)}
               dateFormat="dd.mm.yy"
               showTime
               hourFormat="24"
               showIcon
             />
             <Calendar
-              className="[&_input]:w-full [&_input]:p-2.5 [&_input]:border [&_input]:"
-              value={new Date(formValues.publishedAt)}
-              onChange={(e) => updateFormValue("publishedAt", e.value)}
+              className="[&_input]:w-full [&_input]:p-2.5 [&_input]:border [&_button]:bg-primary-300 [&_button]:text-white"
+              value={formValues.publishedTill ? new Date(formValues.publishedTill) : null}
+              onChange={(e) => updateFormValue("publishedTill", e.target.value)}
               dateFormat="dd.mm.yy"
               showTime
               hourFormat="24"

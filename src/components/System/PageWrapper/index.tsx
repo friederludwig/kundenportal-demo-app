@@ -2,11 +2,15 @@ import { getPageWrapperStyles } from "./styles";
 import { useRouterStore } from "../../../lib/store/router.store";
 import { APP_ROUTES } from "../../../lib/const/routes";
 import { useConfigStore } from "../../../lib/store/config.store";
+import { useEffect } from "react";
 
 const PageWrapper = () => {
   const { activePage } = useRouterStore();
   const styles = getPageWrapperStyles();
-  const configStore = useConfigStore();
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [activePage])
 
   return (
     <div className={styles.wrapper}>
